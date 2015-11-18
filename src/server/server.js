@@ -30,7 +30,6 @@ app.use(bodyParser.json())
  */
 app.get(/^(?!.*(api|.js|.css)).*$/, function (req, res) {
   let location = createLocation(req.url);
-  console.log("LOCAL")
   match({ routes, location }, (error, redirectLocation, renderProps) => {
     console.log(location);
       if (error) {
@@ -52,84 +51,6 @@ app.get(/^(?!.*(api|.js|.css)).*$/, function (req, res) {
     })
 
 });
-
-function updateCache (callback) {
-  let host = 'http://jsonplaceholder.typicode.com',
-      endpoints = [
-        'posts',
-        'posts/1/comments',
-      ];
-
-  _.forEach(endpoints, function (endpoint, i) {
-    request.get(url.resolve(host, endpoint), function (err, response, data) {
-      let client = redis.createClient();
-
-      console.log(data);
-
-      client.set(`${REDIS_NAMESPACE}-${endpoint}`, data, function () {
-        console.log("FINISHED CACHING", endpoint);
-        client.quit();
-
-        if (callback) callback();
-      })
-    });
-  });
-}
-
-app.get('/api/cache/update', function (req, res) {
-  res.send('Updating cache')
-  updateCache()
-});
-
-/**
- * Retrieves a list of pages
- * @return {array} An array of page objects
- */
-app.get('/api/posts', function (req, res) {
-  let client = redis.createClient(),
-      endpoint = 'posts';
-
-  client.get(`${REDIS_NAMESPACE}-${endpoint}`, function (err, data) {
-    if (err || data === undefined) {
-      updateCache(function () {
-        client.get(`${REDIS_NAMESPACE}-${endpoint}`, function (err, data) {
-          res.json(JSON.parse(data));
-          client.quit();
-        });
-      })
-    }
-    else {
-      res.json(JSON.parse(data));
-      client.quit();
-    }
-  });
-});
-
-/**
- * Retrieves a list of pages
- * @return {array} An array of page objects
- */
-app.get('/api/comments', function (req, res) {
-  let client = redis.createClient(),
-      endpoint = 'posts/1/comments';
-
-  client.get(`${REDIS_NAMESPACE}-${endpoint}`, function (err, data) {
-    if (err || data === undefined) {
-      updateCache(function () {
-        client.get(`${REDIS_NAMESPACE}-${endpoint}`, function (err, data) {
-          res.json(JSON.parse(data));
-          client.quit();
-        });
-      })
-    }
-    else {
-      res.json(JSON.parse(data));
-      client.quit();
-    }
-  });
-});
-
-
 
 // run the server
 let server = app.listen(PORT, function () {
