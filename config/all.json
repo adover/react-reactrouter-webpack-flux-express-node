@@ -1,0 +1,56 @@
+{
+    "account": "kpretail",
+    "type": "node",
+    "script": false,
+    "fab": {
+        "update": true
+    },
+
+    "repo": {
+        "url": "git@bitbucket.org:youngshand/3663-kip-kiwipropertyretail.git",
+        "submodules": false
+    },
+
+    "staging": {
+        "host": "staging2.beingbui.lt",
+        "url": "kpretail.beingbui.lt",
+        "branch": "develop",
+        "monitor": "pm2",
+        "entry": "build/server.js",
+
+        "nginx": {
+            "protect": true
+        },
+
+        "ssl": {
+            "on": true,
+            "redirect": true,
+
+            "crt": "/etc/nginx/ssl_beingbui.lt/*.beingbui.lt.crt",
+            "key": "/etc/nginx/ssl_beingbui.lt/*.beingbui.lt.key"
+        }
+    },
+
+    "live": {
+        "host": "kprlive.beingbui.lt",
+        "url": "kprlive.beingbui.lt",
+        "branch": "master",
+        "monitor": "pm2",
+        "entry": "build/server.js",
+
+        "ssl": {
+            "on": true,
+            "redirect": true,
+
+            "crt": "/etc/nginx/ssl_beingbui.lt/*.beingbui.lt.crt",
+            "key": "/etc/nginx/ssl_beingbui.lt/*.beingbui.lt.key"
+        }
+    },
+
+    "node": {
+        "on": true,
+        "port": 3002,
+        "monitor": "pm2",
+        "entry": "build/server.js"
+    }
+}

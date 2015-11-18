@@ -1,0 +1,104 @@
+/*Main*/
+
+/////////////////////////
+// VARIABLES & CLASSES
+/////////////////////////
+
+// Colors
+$offwhite: #f6f5ef;
+$beige: #f3f0eb;
+$grey5: #262626;
+$grey4: #333333;
+$grey3: #cccccc;
+$grey2: #111111;
+$grey1: #f9f8f5;
+
+/*Blue*/
+$col1s1: #1c52b8;
+$col1s2: #17479e;
+$col1s3: #143b85;
+
+/*Green*/
+$col2s1: #9bebdf;
+$col2s2: #8ad0c5;
+$col2s3: #79b8ae;
+
+/*Pale*/
+$col3s1: #fcf7e3;
+$col3s2: #e2ddcb;
+$col3s3: #c9c5b5;
+
+// Mixins
+@mixin border-radius($radius) {
+
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin transition($property, $duration, $transition){
+  -webkit-transition:$property $duration $transition;
+    -moz-transition:$property $duration $transition;
+       transition:$property $duration $transition;
+}
+
+@mixin delay($delay) {
+  -webkit-transition-delay:$delay;
+    -moz-transition-delay:$delay;
+       transition-delay:$delay;
+}
+
+@mixin transform($property, $origin:none){
+  transform: $property;
+  -webkit-transform: $property;
+  -moz-transform: $property;
+  -ms-transform: $property;
+
+  transform-origin: $origin;
+  -webkit-transform-origin: $origin;
+  -moz-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+}
+
+@mixin keyframes($animation_name) {
+    @-webkit-keyframes #{$animation_name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animation_name} {
+        @content;
+    }
+
+    @-o-keyframes #{$animation_name} {
+        @content;
+    }
+
+    @keyframes #{$animation_name} {
+        @content;
+    }
+}
+@mixin animations($str) {
+  -webkit-animation: #{$str}; /* Safari 4+ */
+  -moz-animation:    #{$str}; /* Fx 5+ */
+  -o-animation:      #{$str}; /* Opera 12+ */
+  animation:         #{$str}; /* IE 10+, Fx 29+ */
+}
+
+@mixin image-2x($file, $type, $width, $height) {
+  background-image: url($file + '.' + $type);
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (-moz-min-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx){
+    & {
+      background-image: url($file + '@2x.' + $type);
+      -webkit-background-size: $width $height;
+      -moz-background-size: $width $height;
+      -o-background-size: $width $height;
+      background-size: $width $height;
+    }
+  }
+}

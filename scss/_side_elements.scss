@@ -1,0 +1,22 @@
+/* Side elements Stylesheet */
+
+.side-element {
+  position: relative;
+  &:before {
+    content: '';
+    display: none;
+    position: absolute;
+    width: 148px;
+    height: 173px;
+  }
+  &.stripes:before {
+    top: 0;
+    right: 0;
+    @include image-2x('//s3-ap-southeast-2.amazonaws.com/kiwiproperty/retail_sites/side_elements/teal-stripes-top-right', 'png', 148px, 173px);
+  }
+  @media (min-width: 768px) {
+    &:before {
+      display: block;
+    }
+  }
+}

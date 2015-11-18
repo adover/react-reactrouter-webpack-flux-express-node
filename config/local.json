@@ -1,0 +1,7 @@
+{
+  "local": {
+    "url": "my-promo.dev",
+    "branch": "develop",
+    "host": "v.apps.youngshand.com"
+  }
+}

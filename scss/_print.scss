@@ -1,0 +1,25 @@
+@media print {
+  .detail-heading{
+  	display: none!important;
+  }
+  header{
+    display: none!important;
+  }
+  footer{
+    display: none!important;
+  }
+  .mobile-nav{
+    display: none!important;
+  }
+  .share-link, .print-link{
+    display: none!important;
+  }
+  .content-container{
+    margin-top: 100px!important;
+  }
+  .news-detail{
+    .article-container{
+      display: none!important;
+    }
+  }
+}

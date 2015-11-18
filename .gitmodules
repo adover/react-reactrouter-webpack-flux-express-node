@@ -1,0 +1,4 @@
+[submodule "fabfile"]
+	path = fabfile
+	url = git@bitbucket.org:youngshand/fabfile.git
+	branch = master

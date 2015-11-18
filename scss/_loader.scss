@@ -1,0 +1,50 @@
+
+.loader, .main-loader{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 20;
+  @include transition(2s, opacity, ease);
+  opacity: 1;
+  &.hide-loader{
+    opacity: 0;
+  }
+  span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    @include border-radius(5px);
+    background: $col3s3;
+    margin-top: -5px;
+    opacity: 0;
+    display: block;
+    @include transform(scale(0));
+    @include animations(2.5s fadescale infinite);
+    &:first-child{
+      margin-left: -20px;
+    }
+    &:nth-child(2){
+        -webkit-animation-delay: 0.5s!important;
+        animation-delay: 0.5s;
+        margin-left: -5px;
+    }
+    &:last-child{
+        -webkit-animation-delay: 1s!important;
+        animation-delay: 1s;
+        margin-left: 10px;
+    }
+  }
+}
+
+.main-loader{
+  background: white;
+  z-index: 9999;
+}
+
+.ie9 .main-loader, .ie9 .loader {
+  display: none !important;
+}

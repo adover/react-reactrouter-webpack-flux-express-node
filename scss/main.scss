@@ -1,0 +1,24 @@
+@import '../css/bootstrap.min.css';
+
+/* General styles */
+@import '_variables';
+@import '_type';
+
+/* Common Elements */
+@import '_loader';
+@import '_general';
+@import '_header';
+@import '_footer';
+@import '_modals';
+@import '_side_elements';
+
+/* Specific page definitions go here */
+@import '_homepage';
+
+/* Component specific imports */
+
+/* Fun stuff */
+@import '_animations';
+
+/* Print styling */
+@import '_print';

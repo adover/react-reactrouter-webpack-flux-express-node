@@ -1,0 +1,102 @@
+.site-header{
+  max-height: 111px;
+  overflow: hidden;
+  position: relative;
+  z-index: 50;
+  background: white;
+  .logo-section{
+    a{
+      margin: 20px 0;
+      display: block;
+      width: 155px;
+      height: 27px;
+      background: red;
+      @media screen and (min-width: 768px){
+        margin: 42px 0 42px 0;
+      }
+      @media screen and (min-width: 992px){
+        width: 280px;
+        height: 47px;
+        margin: 32px 0 32px 15px;
+      }
+    }
+  }
+  .navbar-section{
+    background: $grey1;
+    position: relative;
+    padding-right: 30px;
+    &:before {
+      content: '';
+      display: block;
+      background-position: -420px 0;
+      position: absolute;
+      top: 0;
+      left: -28px;
+      width: 28px;
+      height: 100%;
+    }
+    @media screen and (min-width: 768px){
+      padding: 24px 50px 27px 0;
+      &:before {
+        background-position: -401px 0;
+        left: -48px;
+        width: 48px;
+      }
+    }
+    ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      float: right;
+      text-align: right;
+      li{
+        display: inline-block;
+        a{
+          @include transition(0.3s, all, ease);
+        }
+      }
+    }
+  }
+}
+
+// Mobile nav
+.mobile-nav {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 200;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    width: 25%;
+    margin: 10px 0;
+    padding: 0;
+    border-left: 1px solid rgba($grey2, 0.2);
+    &:first-child {
+      border-left: none;
+    }
+    a {
+      font-size: 0.8rem;
+      line-height: 1;
+      text-align: center;
+      color: rgba(white, 0.5);
+      display: block;
+      padding: 5px 0;
+      @include transform( scale(0.95) );
+      @include transition(0.3s, all, ease);
+      &:before {
+        content: '';
+        display: block;
+        width: 22px;
+        height: 22px;
+        margin: 0 auto 5px;
+      }
+    }
+  }
+  @media screen and (min-width: 768px){
+    display: none;
+  }
+}
