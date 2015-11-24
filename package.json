@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf lib",
-    "watch-js": "./node_modules/.bin/babel -w src --out-dir lib --presets es2015,react",
+    "watch-js": "babel -w src --out-dir lib --presets es2015,react",
     "dev-server": "node lib/server/webpack",
     "server": "nodemon lib/server/server",
     "start": "if [ -f ./scripts/local.sh ]; then source ./scripts/local.sh; fi; npm run watch-js & npm run dev-server & npm run server",
-    "build": "npm run clean && ./node_modules/.bin/babel src --out-dir lib --presets es2015,react",
+    "build": "npm run clean && babel src --out-dir lib --presets es2015,react",
     "deploy": "export NODE_ENV=production; npm build && npm run _deploy_client",
     "_deploy_client": "webpack --progress --colors --config ./config/webpack.config.production.js",
     "tail": "tail -f ./logs/*",
