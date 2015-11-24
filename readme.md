@@ -1,4 +1,4 @@
-# Cool New Front End
+# ReactJS, NodeJS, Webpack, Flux, Express Stack
 
 This is built using React and other awesome web component stuff, so it's probably new to what you're used to. If you want to get your hands dirty, read on.
 
@@ -37,16 +37,6 @@ we will cover the struction in relation to them.
 The Views in our case are react components. React begins it's rendering at a
 single root component which begins the nesting of other components. For our case
 the react-router provides the root element `<Handler />` from within it's run method.
-
-Both the server and the client render the Router via it's run method:
-
-```
-Router.run(routes, Router.HistoryLocation, (Handler, state) => {
-  React.render(<Handler />, document.getElementById('app'));
-});
-```
-
-The above snippet can be found in `src/client/entry.js`.
 
 Here the `Router` is running and using the pre-defined `routes` to determine which
 route to render. The `HistoryLocation` tells it to use clean URIs rather than
