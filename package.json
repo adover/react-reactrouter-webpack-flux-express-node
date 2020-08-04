@@ -71,7 +71,7 @@
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "react-google-analytics": "^0.2.0",
-    "react-helmet": "^2.1.0",
+    "react-helmet": "^6.1.0",
     "react-redux": "^2.1.2",
     "react-router": "^1.0.0",
     "redis": "^2.0.1",
